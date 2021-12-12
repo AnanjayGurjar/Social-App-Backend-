@@ -5,7 +5,7 @@ const format = require('date-format')       //for editing the date in better sha
 const app = express()       //creating app from the express
 
 //A port number is a way to identify a specific process to which an internet or other network message is to be forwarded when it arrives at a server. All network-connected devices come equipped with standardized ports that have an assigned number
-const PORT = 4000 || process.env.PORT       //use the port number as 4000 but if something is defined at the process.env(environment variable) use the port number from there
+const PORT = process.env.PORT || 4000;     //use the port number as 4000 but if something is defined at the process.env(environment variable) use the port number from there
 
 
 
@@ -83,4 +83,14 @@ app.listen(PORT, () => {
     console.log(`Server is running at ${PORT}`);
 });
 
-
+//guide to push the code to heroku
+/**
+ * git init
+ * add and commit to git
+ * optionally push to github
+ * 
+ * create Heroku app
+ * push code to heroku app
+ * debug
+ * push again
+ */
