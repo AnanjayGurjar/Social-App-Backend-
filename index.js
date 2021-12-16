@@ -4,6 +4,15 @@ const express = require('express')      //importing express
 const format = require('date-format')       //for editing the date in better shape
 const app = express()       //creating app from the express
 
+//swagger docs related
+const swaggerUi = require('swagger-ui-express');
+// const swaggerDocument = require('./swagger.json');
+
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 //A port number is a way to identify a specific process to which an internet or other network message is to be forwarded when it arrives at a server. All network-connected devices come equipped with standardized ports that have an assigned number
 const PORT = process.env.PORT || 4000;     //use the port number as 4000 but if something is defined at the process.env(environment variable) use the port number from there
 
@@ -13,6 +22,7 @@ const PORT = process.env.PORT || 4000;     //use the port number as 4000 but if 
 //     // res.send("Hello World");            //i want to send a response here, which is a string "Hello world"
 //     res.send("<h1>Hello from the header tag</h1>");
 // })
+
 
 //As soon as you make request to the web, the web analyzs the request, process and maybe grab some data from the db and then get you a response back and not only the response ,it also get you the status or the status code
 
@@ -94,3 +104,5 @@ app.listen(PORT, () => {
  * debug
  * push again
  */
+
+//nodemon is dev dependency and dev depency is pruned(or deleted) and we are trying to run index.js using nodemon, so we must change it to node index.js
